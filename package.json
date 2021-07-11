@@ -1,0 +1,13 @@
+{
+  "name": "website-template",
+  "version": "0.0.1",
+  "description": "Basic template for full-stack web development",
+  "scripts": {
+  },
+  "author": "Loïck Jeanneret",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
