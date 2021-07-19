@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strict": true,
+    "types": [
+      "@types/fs-extra"
+    ],
+    "esModuleInterop": true
+  }
+}
