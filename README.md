@@ -13,3 +13,14 @@ Basic template for web development
 - SASS
 - esbuild
 
+
+### Back-end
+
+- Node.js
+- Next.js
+
+## Debugging
+
+### Server
+
+- With VSCode: ctrl-shift-p > Debug: Toggle Auto Attache > Only With Flag

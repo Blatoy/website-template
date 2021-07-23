@@ -22,7 +22,7 @@ export const Header: React.FunctionComponent<HeaderProps> = ({ routes }) => {
             <Switch>
                 {
                     routes.map((url, index) =>
-                        <Route key={index} path={url.path}>
+                        <Route exact={url.path === "/"} key={index} path={url.path}>
                             <h1>{url.text}</h1>
                         </Route>
                     )

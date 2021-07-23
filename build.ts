@@ -3,12 +3,16 @@ import path = require("path");
 import esbuild = require("esbuild");
 import sassPlugin = require("esbuild-plugin-sass");
 import { BuildResult } from "esbuild";
+import TscWatchClient from "tsc-watch/client";
+import { ChildProcessWithoutNullStreams, spawn } from "child_process";
 
 const DIST_FOLDER_PATH = "dist";
 const STATIC_PATHS = ["client/index.html", "client/static"];
 
 const args = process.argv.slice(2);
 const env = args[0];
+
+const tscWatch = new TscWatchClient();
 
 const baseConfig = {
     entryPoints: ["client/src/index.tsx"],
@@ -23,15 +27,31 @@ switch (env) {
 
             fs.copyFileSync(".env.template", ".env");
         }
+
+        // Client
         esbuild.build({
             ...baseConfig,
-            outdir: "client/build",
+            outdir: "client/static/build",
             watch: true,
-            sourcemap: true
-        }).catch(() => process.exit(1));
+            sourcemap: true,
+            logLevel: "info"
+        }).catch(() => {
+            tscWatch.kill();
+            process.exit(1);
+        });
 
-        console.log("Running website in DEV environment");
+        // Server
+        let nodeServer: ChildProcessWithoutNullStreams;
+        tscWatch.start("--project", "./server");
 
+        tscWatch.on("success", () => {
+            nodeServer?.kill();
+            nodeServer = spawn("node", ["--inspect", "./server/build/src/main.js"]);
+
+            nodeServer.stdout.on("data", data => process.stdout.write(data.toString()));
+            nodeServer.stderr.on("data", data => process.stderr.write(data.toString()));
+
+        });
     } break;
     case "prod": {
         const asyncBuildSteps: Promise<BuildResult | void>[] = [];
