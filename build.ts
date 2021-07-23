@@ -18,6 +18,11 @@ const baseConfig = {
 
 switch (env) {
     case "dev": {
+        if (!fs.pathExistsSync(".env")) {
+            console.log("Creating .env from .env.template");
+
+            fs.copyFileSync(".env.template", ".env");
+        }
         esbuild.build({
             ...baseConfig,
             outdir: "client/build",
