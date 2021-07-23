@@ -7,7 +7,6 @@
     "env": {
         "node": true
     },
-    "ignorePatterns": ["build/**", "dist/**"],
     "rules": {
         "eqeqeq": "error",
         "semi": "error",

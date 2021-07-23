@@ -4,7 +4,8 @@
   "description": "Basic template for full-stack web development",
   "scripts": {
     "start": "ts-node build.ts dev",
-    "build": "ts-node build.ts prod"
+    "build": "ts-node build.ts prod",
+    "check": "tsc --project ./client --noemit && tsc --project ./server --noemit && eslint ."
   },
   "author": "Loïck Jeanneret",
   "license": "ISC",
