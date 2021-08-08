@@ -22,10 +22,11 @@ Basic template for web development
 ### Prod
 
 - `npm run build`
+- Setup database
 
 ## Notes
 
-- Everything in `client/static` is served publicly
+- Everything in `client/static` is copied into the public folder
 - Routes specified in `server/routes.json` will serve `index.html` to make the SPA work
 - `prod` and `dev` build have the same architecture:
   - client/
@@ -33,6 +34,17 @@ Basic template for web development
     - \<content of static folder>
   - server/
     - build/
+- client/tsconfig.json is only useful for error detection, client ts compilation is done by `esbuild` and most options are ignored
+- server and clients dependencies are separated but devDepencies are not
+
+## Migrations
+
+Generating and running migrations requires the project to be built. In dev environment, `TYPEORM_SYNCHRONIZE` can be set to true.
+
+- Generate: `npm run migration:generate -- <name>`
+- Run: `npm run migration:run -- <name>`
+
+TypeORM CLI is accessible using `npm run typeorm`
 
 ## Technologies
 

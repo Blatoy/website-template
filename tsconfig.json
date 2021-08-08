@@ -6,7 +6,8 @@
     "isolatedModules": true,
     "strict": true,
     "types": [
-      "@types/fs-extra"
+      "@types/fs-extra",
+      "@types/tsc-watch"
     ],
     "esModuleInterop": true
   }

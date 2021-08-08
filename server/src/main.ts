@@ -15,7 +15,7 @@ async function bootstrap() {
         app.setGlobalPrefix("api");
 
         const server = app.getHttpAdapter().getInstance() as express.Express;
-        const staticFilesPath = join(__dirname, "..", "..", "..", "client", "static");
+        const staticFilesPath = process.env.PUBLIC_FOLDER_PATH as string;
         const staticFolderMiddleware = express.static(staticFilesPath);
 
         server.use("/", (req, res, next) => {
