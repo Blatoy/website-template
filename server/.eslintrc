@@ -1,6 +1,7 @@
 {
     "ignorePatterns": [
         "build/**",
-        "dist/**"
+        "dist/**",
+        "migrations/**"
     ]
 }
