@@ -12,14 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 12.x
-      - run: npm ci
-      - run: npm run check:ci
-      - run: npm run build
-  
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check linting
+        run: npm run check:style-ci
+        continue-on-error: true
+
       - name: Annotate Code Linting Results
         uses: ataylorme/eslint-annotate-action@1.2.0
         with:
@@ -31,3 +35,12 @@ jobs:
         with:
           name: eslint_report.json
           path: eslint_report.json
+
+      - name: Check client for TS compilation errors
+        run: npm run check:client
+        
+      - name: Check server for TS compilation errors
+        run: npm run check:server
+
+      - name: Check that the project builds
+        run: npm run build
