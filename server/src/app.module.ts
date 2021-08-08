@@ -5,9 +5,9 @@ import { APIModule } from "./api/api.module.js";
 @Module({
     imports: [
         TypeOrmModule.forRoot(),
-            APIModule
+        APIModule
     ],
-    controllers: [],
+    controllerss: [],
     providers: [],
 })
 export class AppModule { }
