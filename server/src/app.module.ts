@@ -5,7 +5,7 @@ import { APIModule } from "./api/api.module.js";
 @Module({
     imports: [
         TypeOrmModule.forRoot(),
-        APIModule
+            APIModule
     ],
     controllers: [],
     providers: [],
