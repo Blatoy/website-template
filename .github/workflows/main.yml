@@ -19,7 +19,7 @@ jobs:
       - run: npm ci
 
       - name: Check linting
-        run: npm run check:style-ci
+      - run: npm run check:style-ci
         continue-on-error: true
 
       - name: Annotate Code Linting Results
@@ -35,8 +35,8 @@ jobs:
           path: eslint_report.json
 
       - name: Check for TypeScript compilation errors
-        run: npm run check:client
-        run: npm run check:server
+      - run: npm run check:client
+      - run: npm run check:server
 
       - name: Check that the project builds
       - run: npm run build
