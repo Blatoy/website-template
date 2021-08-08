@@ -14,14 +14,26 @@
         "brace-style": "error",
         "jsdoc/newline-after-description": "off",
         "space-infix-ops": "error",
-        "no-multi-spaces": "error",
+        "no-multi-spaces": [
+            "error",
+            {
+                "exceptions": {
+                    "VariableDeclarator": true
+                }
+            }
+        ],
         "no-var": "error",
         "keyword-spacing": "error",
         "comma-spacing": "error",
         "no-implicit-coercion": "error",
         "prefer-const": "warn",
         "react/prop-types": "off",
-        "@typescript-eslint/array-type": ["error", {"defaults": "array"}],
+        "@typescript-eslint/array-type": [
+            "error",
+            {
+                "defaults": "array"
+            }
+        ],
         "quotes": [
             "error",
             "double",
