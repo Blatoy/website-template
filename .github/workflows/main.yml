@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 12.x
       - run: npm ci
-      - run: npm run check:style-ci
+      - run: npm run check:ci
       - run: npm run build
   
       - name: Annotate Code Linting Results
