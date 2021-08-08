@@ -17,9 +17,11 @@ jobs:
         with:
           node-version: 12.x
       - run: npm ci
-      - run: npm run check:ci
-      - run: npm run build
-  
+
+      - name: Check linting
+        run: npm run check:style-ci
+        continue-on-error: true
+
       - name: Annotate Code Linting Results
         uses: ataylorme/eslint-annotate-action@1.2.0
         with:
@@ -31,3 +33,10 @@ jobs:
         with:
           name: eslint_report.json
           path: eslint_report.json
+
+      - name: Check for TypeScript compilation errors
+        run: npm run check:client
+        run: npm run check:server
+
+      - name: Check that the project builds
+      - run: npm run build

@@ -11,7 +11,6 @@
     "build": "ts-node build.ts prod",
     "build:dev": "ts-node build.ts build-dev",
     "check": "npm run check:client && npm run check:server && npm run check:style",
-    "check:ci": "npm run check:client && npm run check:server && npm run check:style-ci",
     "check:client": "tsc --project ./client --noemit",
     "check:server": "tsc --project ./server --noemit",
     "check:style": "eslint .",
