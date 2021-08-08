@@ -3,3 +3,4 @@ build
 dist
 .env
 *.sql
+eslint_report.json
