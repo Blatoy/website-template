@@ -7,7 +7,8 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build_and_check:
+    name: Build and run checks
 
     runs-on: ubuntu-latest
     steps:
@@ -29,12 +30,7 @@ jobs:
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           report-json: "eslint_report.json"
-          
-      - name: Upload ESLint report
-        uses: actions/upload-artifact@v2
-        with:
-          name: eslint_report.json
-          path: eslint_report.json
+        continue-on-error: true
 
       - name: Check client for TS compilation errors
         run: npm run check:client
