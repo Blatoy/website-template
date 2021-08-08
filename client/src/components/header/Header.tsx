@@ -18,7 +18,7 @@ type URL = {
 
 export const Header: React.FunctionComponent<HeaderProps> = ({ routes }) => {
     return (
-        <Router>
+            <Route2r>
             <Switch>
                 {
                     routes.map((url, index) =>
