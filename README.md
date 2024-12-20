@@ -1,6 +1,6 @@
 ## About
 
-Basic template for web development 
+Experimenting with web frameworks / libraries. This should probably not be used for anything :)
 
 ## Installation
 
@@ -61,4 +61,4 @@ TypeORM CLI is accessible using `npm run typeorm`
 ### Back-end
 
 - Node.js
-- Next.js
+- Nest.js
